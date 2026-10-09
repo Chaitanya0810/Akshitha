@@ -106,7 +106,9 @@ packages/
 
 ## Hosting
 
-GitHub Pages hosts the static homepage preview, but it cannot run this application's Next.js server, NestJS API, or MySQL database. A live, interactive demo needs a host for the web app and API plus a reachable MySQL database. Configure the database URL, JWT secrets, and web-to-API URL with the hosting provider's environment variables, then deploy the web and API workspaces as Node.js services. Do not use the local demo credentials or sample secrets for a public deployment.
+GitHub Pages hosts the static homepage preview, but it cannot run this application's Next.js server, NestJS API, or database. The repository includes a Render Blueprint in `render.yaml` for the interactive app. It builds a PostgreSQL Prisma client for the hosted demo and connects the existing `school-management-demo-db` database; local development continues to use MySQL.
+
+To create the Render app service, open the Render Dashboard, choose **New → Blueprint**, connect this repository, and apply the `render.yaml` Blueprint. Render will build and start the web app and API together. The free demo database expires 30 days after creation, and the free web service can sleep when idle. The demo credentials above are public and must not be used with real student data.
 
 ## License
 

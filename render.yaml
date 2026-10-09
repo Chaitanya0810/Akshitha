@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: school-management-system-demo
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    repo: https://github.com/Chaitanya0810/Akshitha.git
+    buildCommand: npm ci && node scripts/render-build.js
+    startCommand: node scripts/render-start.js
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: school-management-demo-db
+          property: connectionString
+      - key: NEXT_PUBLIC_API_URL
+        value: /api/v1
+      - key: CORS_ORIGIN
+        fromService:
+          name: school-management-system-demo
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: API_INTERNAL_URL
+        value: http://127.0.0.1:4000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: NODE_ENV
+        value: production

@@ -199,9 +199,8 @@ export class CommunicationService {
   }
 
   async getConversations(userId: string, schoolId?: string) {
-    return this.prisma.conversation.findMany({
+    const conversations = await this.prisma.conversation.findMany({
       where: {
-        participantIds: { path: '$', array_contains: userId },
         ...(schoolId && { schoolId }),
       },
       include: {
@@ -212,6 +211,13 @@ export class CommunicationService {
       },
       orderBy: { lastMessageAt: 'desc' },
     });
+
+    // Prisma's JSON array_contains filter differs between MySQL and PostgreSQL.
+    return conversations.filter(
+      (conversation) =>
+        Array.isArray(conversation.participantIds) &&
+        conversation.participantIds.includes(userId),
+    );
   }
 
   async getMessages(conversationId: string, userId: string, page = 1, limit = 50) {
