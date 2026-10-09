@@ -14,6 +14,10 @@ A full-stack school administration and learning platform for managing students, 
 
 The application has a Next.js web app, a NestJS API, and a MySQL database managed through Prisma. Redis and S3-compatible storage settings are available for optional integrations; the core app does not require Docker to run.
 
+## Live homepage preview
+
+The static project homepage is published through GitHub Pages at [https://chaitanya0810.github.io/Akshitha/](https://chaitanya0810.github.io/Akshitha/). It is a visual preview of the project; sign-in and data-backed screens require the full app server and database described below.
+
 ## Requirements
 
 - Node.js 20 or newer
@@ -102,7 +106,7 @@ packages/
 
 ## Hosting
 
-GitHub hosts this source code, but GitHub Pages cannot run this application's Next.js server, NestJS API, or MySQL database. A live, interactive demo needs a host for the web app and API plus a reachable MySQL database. Configure the database URL, JWT secrets, and web-to-API URL with the hosting provider's environment variables, then deploy the web and API workspaces as Node.js services. Do not use the local demo credentials or sample secrets for a public deployment.
+GitHub Pages hosts the static homepage preview, but it cannot run this application's Next.js server, NestJS API, or MySQL database. A live, interactive demo needs a host for the web app and API plus a reachable MySQL database. Configure the database URL, JWT secrets, and web-to-API URL with the hosting provider's environment variables, then deploy the web and API workspaces as Node.js services. Do not use the local demo credentials or sample secrets for a public deployment.
 
 ## License
 
