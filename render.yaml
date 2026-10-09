@@ -6,7 +6,7 @@ services:
     region: singapore
     branch: main
     repo: https://github.com/Chaitanya0810/Akshitha.git
-    buildCommand: npm ci && node scripts/render-build.js
+    buildCommand: npm ci --include=dev && node scripts/render-build.js
     startCommand: node scripts/render-start.js
     autoDeploy: true
     healthCheckPath: /
