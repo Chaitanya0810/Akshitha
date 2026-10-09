@@ -100,6 +100,10 @@ packages/
 | `npm run db:seed:demo` | Add or ensure the sample student and coursework data |
 | `npm run db:studio` | Open the database browser |
 
+## Hosting
+
+GitHub hosts this source code, but GitHub Pages cannot run this application's Next.js server, NestJS API, or MySQL database. A live, interactive demo needs a host for the web app and API plus a reachable MySQL database. Configure the database URL, JWT secrets, and web-to-API URL with the hosting provider's environment variables, then deploy the web and API workspaces as Node.js services. Do not use the local demo credentials or sample secrets for a public deployment.
+
 ## License
 
 This project is available under the GNU Affero General Public License v3.0. See [LICENSE](LICENSE).
